@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import express from 'express'
-
+import bcrypt from 'bcrypt'
+import  jwt, { Secret } from 'jsonwebtoken';
 
 const router = express.Router();
 
@@ -27,41 +28,15 @@ interface SigninBody {
 
 router.post('/signup', async(req: Request < {}, {}, SignupBody>, res: Response) => {
     const {name, email, password } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password,10) //hashing the pasword
+
     console.log(name + email + password);
     
 });
 
 router.post('/signin', async(req: Request <{}, {}, SigninBody> , res: Response) => {
 
-});
-
-router.get('/content',(req, res) => {
-    
-});
-
-router.post('/content',(req, res) => {
-
-});
-
-
-router.put('/content',(req, res) => {
-    
-});
-
-router.delete('/content',(req, res) => {
-    
-});
-
-router.post('/brain/share',(req, res) => {
-    
-});
-
-router.get('/brain/:shareLink',(req, res) => {
-    
-});
-
-router.delete('/brain/share',(req, res) => {
-    
 });
 
 

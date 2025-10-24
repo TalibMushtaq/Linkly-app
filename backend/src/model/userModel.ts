@@ -30,9 +30,6 @@ const LinkSchema = new Schema ({
 
 
 
-
-
-
 export const UserModel = model('User', UserSchema);
 export const ContentModel = model('Content', ContentSchema);
 export const LinkModel = model('Links',LinkSchema);
