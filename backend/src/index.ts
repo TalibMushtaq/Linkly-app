@@ -1,21 +1,25 @@
 import express from 'express';
+import 'dotenv/config'; 
 import { connectDB } from './utils/database';
 
 import userRoute from './routes/user';
-import contentRoute from './routes/content';
-import LinksRoute from './routes/Links'
+//import contentRoute from './routes/content';
+//import LinksRoute from './routes/Links';
 
-const app = express()
 
-app.use('/api/user',userRoute);
-app.use('/api/v1', contentRoute);
-app.use('/api/v2', LinksRoute);
+
+const app = express();
+app.use(express.json());
+
+app.use('/api/user', userRoute);   // -Handles login, signup, etc.
+//app.use('/api/v1', contentRoute);  // -Handles post, put, delete, get content
+//app.use('/api/v2', LinksRoute);    // -Handles post, get, delete shared links/content
 
 
 
 const startServer = async () => {
   try {
-    await connectDB();
+    await connectDB(); // <- connect to database 
     
     const PORT = 5000;
     
@@ -30,4 +34,4 @@ const startServer = async () => {
 };
 
 
-startServer();
+startServer(); // <- start the sever 
