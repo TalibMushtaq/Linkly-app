@@ -16,11 +16,11 @@ const ContentSchema  = new Schema ({
     title : String,
     Link : String,
     tags : [{type: mongoose.Types.ObjectId,ref:'tag'}],
-    userId : [{
+    userId : {
         type: mongoose.Types.ObjectId,
         ref : 'User',
         require : true
-    }],
+    },
 });
 
 const LinkSchema = new Schema ({

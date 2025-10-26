@@ -3,7 +3,7 @@ import 'dotenv/config';
 import { connectDB } from './utils/database';
 
 import userRoute from './routes/user';
-//import contentRoute from './routes/content';
+import contentRoute from './routes/content';
 //import LinksRoute from './routes/Links';
 
 
@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/user', userRoute);   // -Handles login, signup, etc.
-//app.use('/api/v1', contentRoute);  // -Handles post, put, delete, get content
+app.use('/api/v1', contentRoute);  // -Handles post, put, delete, get content
 //app.use('/api/v2', LinksRoute);    // -Handles post, get, delete shared links/content
 
 
