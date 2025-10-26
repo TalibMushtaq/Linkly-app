@@ -23,16 +23,17 @@ const ContentSchema  = new Schema ({
     },
 });
 
-const LinkSchema = new Schema ({
-    hash: String,
-    userId : { type: mongoose.Types.ObjectId, ref : 'User', require : true, unique : true},
-
+const SharedContentSchema = new Schema({
+  contentId: { type: mongoose.Types.ObjectId, ref: 'Content', required: true },
+  userId: { type: mongoose.Types.ObjectId, ref: 'User', required: true },
+  shareId: { type: String, unique: true, required: true }, 
+  createdAt: { type: Date, default: Date.now },
 });
 
 
 
 export const UserModel = model('User', UserSchema);
 export const ContentModel = model('Content', ContentSchema);
-export const LinkModel = model('Links',LinkSchema);
+export const SharedContentModel = model('Links',SharedContentSchema);
 
 
