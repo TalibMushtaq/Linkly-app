@@ -12,7 +12,7 @@ function App() {
       <Button variant='Secondary' text='Share' size='md' onClick={()=>{}}/>
       <Button variant='Primary' text = 'Share' size='sm' onClick={()=>{}} />
 
-      <div className="p-6 space-y-6">
+      <div className="p-6 space-y-6 flex gap-3">
       {/* YouTube Example */}
       <Card
           title="The 7 Silent Killers of Success"
