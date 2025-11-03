@@ -1,7 +1,6 @@
 import { type IconProps, iconSizeVariants } from "./config";
-
-export const PlusIcon = (props: IconProps) => {
-   const sizeClass = iconSizeVariants[props.size || "sm"];
+export const CrossIcon = (props: IconProps) => {
+    const sizeClass = iconSizeVariants[props.size || "sm"];
     const defaultStrokeWidth = 1.5;
     const defaultStroke = "currentColor";
 
@@ -9,7 +8,7 @@ export const PlusIcon = (props: IconProps) => {
         <svg
             {...props}
             className={sizeClass} 
-            xmlns="http://www.w3.org/2000/svg"
+           xmlns="http://www.w3.org/2000/svg"
             fill="none" 
             viewBox="0 0 24 24"
             strokeWidth={props.strokeWidth || defaultStrokeWidth}
@@ -18,7 +17,7 @@ export const PlusIcon = (props: IconProps) => {
             <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M12 4.5v15m7.5-7.5h-15"
+                d="M6 18 18 6M6 6l12 12"
             />
         </svg>
     );

@@ -13,8 +13,6 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ title, link, type }) => {
     const [copied, setCopied] = useState(false);
-    const [expanded, setExpanded] = useState(false);
-
     // --- Extract YouTube video ID ---
     const getYoutubeId = (url: string): string | null => {
         try {
