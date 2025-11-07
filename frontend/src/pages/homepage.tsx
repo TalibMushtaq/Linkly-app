@@ -38,10 +38,10 @@ export const HomePage = () => {
           <>
             <HeroIcon className="text-purple-700 w-16 h-16 mb-6" />
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Welcome to <span className="text-purple-700">MyApp</span>
+              Welcome to <span className="text-purple-700">linkly</span>
             </h2>
             <p className="text-gray-600 text-lg max-w-xl mb-8">
-              Simplify your workflow and manage your tasks effortlessly.  
+              Simplify your workflow and manage your links effortlessly.  
               Get started today by creating your free account.
             </p>
 
@@ -96,7 +96,7 @@ export const HomePage = () => {
 
       {/* ⚙️ Footer */}
       <footer className="text-center text-sm text-gray-500 py-4 border-t">
-        © {new Date().getFullYear()} MyApp. All rights reserved.
+        © {new Date().getFullYear()} linkly. All rights reserved.
       </footer>
     </div>
   );
