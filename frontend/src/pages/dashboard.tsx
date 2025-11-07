@@ -6,7 +6,7 @@ import { CreateContentForm } from "../components/ui/CreatContentForm";
 import { Card } from "../components/ui/Card";
 import { Sidebar } from "../components/ui/Sidebar";
 
-export const UserDashboard = () => {
+export const Dashboard = () => {
   const [showForm, setShowForm] = useState(false);
 
   return (
@@ -53,7 +53,10 @@ export const UserDashboard = () => {
         </div>
 
         {/* Modal/Form */}
-        <CreateContentForm isOpen={showForm} onClose={() => setShowForm(false)} />
+        <CreateContentForm
+          isOpen={showForm}
+          onClose={() => setShowForm(false)}
+        />
       </div>
     </div>
   );
