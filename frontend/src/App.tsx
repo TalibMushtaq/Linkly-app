@@ -1,10 +1,10 @@
 import './App.css';
-import { UserDashboard } from './pages/userdashboard';
+import { HomePage } from './pages/homepage';
 
 function App() {
   return (
     <div>
-      <UserDashboard />
+        <HomePage />
     </div>
   );
 }

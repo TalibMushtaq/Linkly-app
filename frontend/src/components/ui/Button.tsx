@@ -10,8 +10,8 @@ export interface ButtonProps {
 }
 
 const variantStyles = {
-  Primary: "bg-purple-600 text-white hover:bg-purple-700",
-  Secondary: "bg-purple-200 text-purple-700 hover:bg-purple-300",
+  Primary: "bg-purple-700 text-white hover:bg-purple-600",
+  Secondary: "bg-purple-300 text-purple-700 hover:bg-purple-500 hover:text-white",
 };
 
 const sizeStyles = {
