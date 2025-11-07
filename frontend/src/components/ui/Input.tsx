@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "./Button";
 import { CrossIcon } from "../../assets/icons/crossIcon";
 
 interface InputProps {
   title: string;
-  email?: boolean;
-  password?: boolean;
+  email: boolean;
+  password: boolean;
   username?: boolean;
   fullname?: boolean;
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (data: Record<string, string>) => void;
+  onSubmit: (data: Record<string, string>) => void | Promise<void>;
 }
 
 export const Input = ({
@@ -39,15 +39,12 @@ export const Input = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Overlay */}
       <div className="absolute inset-0 backdrop-blur-sm"></div>
 
-      {/* Modal */}
       <div
         className="relative z-10 bg-white rounded-2xl shadow-2xl w-full max-w-md p-6"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="relative mb-4 text-center">
           <h2 className="text-2xl font-semibold text-gray-900">{title}</h2>
           <button
@@ -58,7 +55,6 @@ export const Input = ({
           </button>
         </div>
 
-        {/* Form */}
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           {fullname && (
             <input
