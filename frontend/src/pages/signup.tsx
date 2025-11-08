@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import { Input } from "../components/ui/Input";
 
 export const SignupForm = () => {
@@ -6,30 +7,27 @@ export const SignupForm = () => {
 
   async function handleSignup(data: Record<string, string>) {
     try {
-      const response = await fetch("http://localhost:5000/api/user/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      const response = await axios.post(
+        "http://localhost:5000/api/user/signup",
+        {
           fullname: data.fullname,
           username: data.username,
           email: data.email,
           password: data.password,
-        }),
-      });
+        }
+      );
 
-      if (!response.ok) {
-        const errorMsg = await response.text();
-        throw new Error(errorMsg || "Signup Failed");
-      }
-
-      const result = await response.json();
-      alert("SignUp Successfull");
+      alert("Signup successful");
+      console.log("Response:", response.data);
       setShowModal(false);
-    } catch (err) {
-      console.error("Signup error", err);
-      alert("Signup failed. Please check your input or try again later.");
+    } catch (err: any) {
+      if (err.response) {
+        console.error("Signup error:", err.response.data);
+        alert(err.response.data.message || "Signup failed. Try again later.");
+      } else {
+        console.error("Signup error:", err.message);
+        alert("Signup failed. Please check your connection.");
+      }
     }
   }
 
