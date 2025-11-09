@@ -29,7 +29,7 @@ export function useCreateContent() {
       );
 
       toast.success("Content created successfully!");
-      return res.data.content; // return new item so Dashboard can update
+      return res.data.content;
     } catch (error) {
       console.error("Failed to create content:", error);
       toast.error("Failed to create content. Please try again later.");

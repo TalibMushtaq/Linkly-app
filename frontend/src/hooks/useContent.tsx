@@ -19,7 +19,6 @@ export function useContent() {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   });
 
-  // Fetch user content
   const fetchContent = useCallback(async () => {
     const token = localStorage.getItem("token");
     if (!token) return;
@@ -35,7 +34,6 @@ export function useContent() {
     }
   }, []);
 
-  // Delete content
   const deleteContent = useCallback(async (contentId: string) => {
     const token = localStorage.getItem("token");
     if (!token) return;
@@ -53,9 +51,13 @@ export function useContent() {
     }
   }, []);
 
+  const addContent = useCallback((newContent: Content) => {
+    setContents((prev) => [newContent, ...prev]);
+  }, []);
+
   useEffect(() => {
     fetchContent();
   }, [fetchContent]);
 
-  return { contents, loading, fetchContent, deleteContent };
+  return { contents, loading, fetchContent, deleteContent, addContent };
 }

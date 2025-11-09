@@ -49,11 +49,11 @@ router.post(
         });
       }
 
-      const { title, link, tags } = parsed.data;
+      const { title, link, type, tags } = parsed.data;
       const userId = req.userid!;
 
       // Save the new content to database
-      const newContent = new ContentModel({ title, link, tags, userId });
+      const newContent = new ContentModel({ title, link, tags, type, userId });
       const savedContent = await newContent.save();
 
       return res.status(201).json({
