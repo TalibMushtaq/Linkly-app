@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 import { HomePage } from "./pages/homepage";
 import { SigninForm } from "./pages/signin";
 import { SignupForm } from "./pages/signup";
@@ -8,6 +9,7 @@ import { Dashboard } from "./pages/dashboard";
 function App() {
   return (
     <BrowserRouter>
+      <Toaster richColors position="bottom-right" />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<SigninForm />} />

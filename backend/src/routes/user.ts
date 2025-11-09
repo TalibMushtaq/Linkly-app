@@ -36,15 +36,20 @@ router.post(
       const hashedPassword = await bcrypt.hash(password, 10);
 
       // Create new user in database
-      await UserModel.create({
+      const newUser = await UserModel.create({
         username,
         fullname,
         email,
         password: hashedPassword,
       });
 
+      const token = jwt.sign({ id: newUser._id.toString() }, JWT_SECRET!, {
+        expiresIn: "7d",
+      });
+
       return res.status(201).json({
         message: "User Created Successfully",
+        token,
       });
     } catch (error) {
       // Handle validation errors
