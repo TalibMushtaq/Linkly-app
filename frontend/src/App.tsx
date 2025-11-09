@@ -6,6 +6,8 @@ import { SigninForm } from "./pages/signin";
 import { SignupForm } from "./pages/signup";
 import { Dashboard } from "./pages/dashboard";
 
+export const API_URL = "http://localhost:5000/api";
+
 function App() {
   return (
     <BrowserRouter>

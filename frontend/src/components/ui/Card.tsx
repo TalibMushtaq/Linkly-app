@@ -6,26 +6,43 @@ import { DeleteIcon } from "../../assets/icons/deleteIcon";
 import { Tweet } from "react-tweet";
 
 interface CardProps {
+  _id: string;
   title: string;
   link: string;
-  type: "X" | "youtube";
+  type: string;
+  onDelete?: (id: string) => void;
 }
 
-export const Card: React.FC<CardProps> = ({ title, link, type }) => {
+export const Card: React.FC<CardProps> = ({
+  _id,
+  title,
+  link,
+  type,
+  onDelete,
+}) => {
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   // --- Extract YouTube video ID ---
   const getYoutubeId = (url: string): string | null => {
     try {
-      const parsed = new URL(url);
-      if (parsed.hostname.includes("youtu.be")) return parsed.pathname.slice(1);
-      if (parsed.hostname.includes("youtube.com"))
-        return parsed.searchParams.get("v");
-    } catch {
+      // Normalize URL by removing angle brackets and trimming spaces
+      const cleaned = url.trim().replace(/[<>]/g, "");
+
+      // This regex covers ALL YouTube formats
+      const match = cleaned.match(
+        /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|shorts\/|watch\?v=|watch\?.+&v=))([^"&?\/\s]{11})/
+      );
+
+      if (match && match[1]) {
+        return match[1];
+      }
+
+      return null;
+    } catch (error) {
+      console.error("Error extracting YouTube ID:", error);
       return null;
     }
-    return null;
   };
 
   // --- Extract Tweet ID ---
@@ -157,8 +174,9 @@ export const Card: React.FC<CardProps> = ({ title, link, type }) => {
 
           {/* Delete */}
           <button
-            className="p-2 hover:bg-gray-100 rounded-md transition"
-            title="Delete"
+            onClick={() => onDelete?.(_id)}
+            className="p-2 hover:bg-gray-100 rounded-md transition text-red-500"
+            title="Delete content"
           >
             <DeleteIcon size="md" />
           </button>
