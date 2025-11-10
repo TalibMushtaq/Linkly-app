@@ -5,6 +5,7 @@ import { HomePage } from "./pages/homepage";
 import { SigninForm } from "./pages/signin";
 import { SignupForm } from "./pages/signup";
 import { Dashboard } from "./pages/dashboard";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 export const API_URL = "http://localhost:5000/api";
 
@@ -16,7 +17,14 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<SigninForm />} />
         <Route path="/signup" element={<SignupForm />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="*"
           element={
