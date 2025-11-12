@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PlusIcon } from "../assets/icons/plusicon";
 import { ShareIcon } from "../assets/icons/shareIcon";
 import { Button } from "../components/ui/Button";
@@ -10,10 +11,18 @@ import type { Content } from "../hooks/useContent";
 import { useCreateContent } from "../hooks/useCreateContent";
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
 
   const { contents, loading, deleteContent } = useContent();
   const { createContent } = useCreateContent();
+
+  const handleLogout = () => {
+    if (confirm("Are you sure you want to log out?")) {
+      localStorage.removeItem("token");
+      navigate("/");
+    }
+  };
 
   async function handleCreate(data: Record<string, string>) {
     const newItem = await createContent(data);
@@ -22,12 +31,20 @@ export const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      {/* Sidebar */}
-      <div className="shadow-lg">
+      {/* Sidebar + Logout */}
+      <div className="shadow-lg flex flex-col justify-between items-center p-4 w-64 bg-white">
         <Sidebar />
+
+        {/* Logout Button */}
+        <button
+          onClick={handleLogout}
+          className="mt-6 w-full text-red-600 border border-red-500 hover:bg-red-50 active:bg-red-100 font-semibold py-2 px-4 rounded-lg transition-all duration-200 ease-in-out"
+        >
+          Log Out
+        </button>
       </div>
 
-      {/* Main content */}
+      {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Top Action Bar */}
         <div className="flex justify-end p-10">

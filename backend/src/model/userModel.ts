@@ -25,10 +25,9 @@ const ContentSchema = new Schema({
   },
 });
 
-const SharedContentSchema = new Schema({
-  contentId: { type: mongoose.Types.ObjectId, ref: "Content", required: true },
-  userId: { type: mongoose.Types.ObjectId, ref: "User", required: true },
-  shareId: { type: String, unique: true, required: true },
+const SharedContentSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  shareId: { type: String, required: true, unique: true },
   createdAt: { type: Date, default: Date.now },
 });
 

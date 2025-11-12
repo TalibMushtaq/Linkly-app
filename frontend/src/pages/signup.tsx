@@ -43,7 +43,10 @@ export const SignupForm = () => {
       <Input
         title="Sign Up"
         isOpen={showModal}
-        onClose={() => setShowModal(false)}
+        onClose={() => {
+          setShowModal(false);
+          navigate("/");
+        }}
         onSubmit={handleSignup}
         email
         username

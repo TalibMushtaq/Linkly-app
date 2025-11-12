@@ -77,7 +77,10 @@ export const SigninForm = () => {
       <Input
         title="Sign In"
         isOpen={showModal}
-        onClose={() => setShowModal(false)}
+        onClose={() => {
+          setShowModal(false);
+          navigate("/");
+        }}
         onSubmit={handleSignin}
         email
         password
