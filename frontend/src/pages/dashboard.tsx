@@ -49,6 +49,7 @@ export const Dashboard = () => {
         {/* Top Action Bar */}
         <div className="flex justify-end p-10">
           <div className="flex gap-2">
+            {/* Add Content Button */}
             <Button
               variant="Primary"
               size="lg"
@@ -56,12 +57,14 @@ export const Dashboard = () => {
               startIcon={<PlusIcon size="lg" />}
               onClick={() => setShowForm(true)}
             />
+
+            {/* Share Links Button */}
             <Button
               variant="Secondary"
               size="lg"
               text="Share links"
               startIcon={<ShareIcon size="lg" />}
-              onClick={() => console.log("Share clicked")}
+              onClick={() => navigate("/shared")}
             />
           </div>
         </div>
