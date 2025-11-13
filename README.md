@@ -189,7 +189,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Author
 
-Linkly Team
+TALIB MUSHTAQ DAR
 
 ---
 
