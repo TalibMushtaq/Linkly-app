@@ -25,7 +25,7 @@ export default function PublicSharePage() {
 
   const fetchShared = async () => {
     try {
-      const res = await axios.get(`${API_URL}/share/${shareId}`);
+      const res = await axios.get(`${API_URL}/v2/share/${shareId}`);
       setData(res.data);
     } catch (err) {
       console.error(err);

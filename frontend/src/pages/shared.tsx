@@ -15,11 +15,18 @@ export default function SharedPage() {
   const [loading, setLoading] = useState(true);
   const PUBLIC_BASE = window.location.origin;
 
+  const token = localStorage.getItem("token");
+
+  const axiosAuth = axios.create({
+    baseURL: API_URL,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   const fetchShare = async () => {
     try {
-      const res = await axios.get(`${API_URL}/shares`, {
-        withCredentials: true,
-      });
+      const res = await axiosAuth.get(`/v2/shares`);
       setShare(res.data);
     } catch (err) {
       console.error(err);
@@ -31,11 +38,7 @@ export default function SharedPage() {
 
   const createShare = async () => {
     try {
-      const res = await axios.post(
-        `${API_URL}/share`,
-        {},
-        { withCredentials: true }
-      );
+      const res = await axiosAuth.post(`/v2/share`);
       toast.success("Share link created");
       setShare({
         shared: true,
@@ -50,7 +53,7 @@ export default function SharedPage() {
 
   const deleteShare = async () => {
     try {
-      await axios.delete(`${API_URL}/share`, { withCredentials: true });
+      await axiosAuth.delete(`/v2/share`);
       toast.success("Share link removed");
       setShare({ shared: false, shareId: null, shareUrl: null });
     } catch (err) {
